@@ -156,4 +156,3 @@ This command will display usage information and available arguments.
 ---
 
 This `README.md` provides instructions for using the CLI tool to generate and scan barcodes and QR codes, including example code snippets, argument descriptions, and error handling tips.
-```
