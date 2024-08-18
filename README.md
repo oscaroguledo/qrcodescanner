@@ -60,6 +60,17 @@ python main.py --scan "barcode.png"
 
 - `--scan` (required): Path to the image file to scan. Only PNG files are supported.
 
+```markdown
+# Barcode and QR Code Function Tool
+
+This tool allows you to generate and scan barcodes and QR codes. It supports embedding logos in the generated codes and provides options to save the output as image files or base64-encoded strings.
+
+## Prerequisites
+
+Ensure you have the required libraries installed:
+```bash
+pip install pyzbar pillow qrcode colorama
+```
 ## Example Usage
 
 Here are some examples demonstrating how to use the CLI tool for generating and scanning QR codes and barcodes.
