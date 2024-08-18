@@ -7,7 +7,7 @@ This command-line interface (CLI) tool allows you to generate and scan barcodes 
 
 Ensure you have the required libraries installed:
 ```bash
-pip install pyzbar pillow qrcode colorama
+pip3 install pyzbar pillow qrcode colorama
 ```
 
 ## Usage
@@ -21,13 +21,13 @@ To generate a QR code or barcode, use the `--generate` option:
 **Generate a QR Code:**
 
 ```bash
-python main.py --generate qrcode --data "https://www.example.com" --logo "logo.png" --output "qrcode.png" --save_as_png
+python3 main.py --generate qrcode --data "https://www.example.com" --logo "logo.png" --output "qrcode.png" --save_as_png
 ```
 
 **Generate a Barcode:**
 
 ```bash
-python main.py --generate barcode --data "123456789012" --logo "logo.png" --output "barcode.png" --save_as_png
+python3 main.py --generate barcode --data "123456789012" --logo "logo.png" --output "barcode.png" --save_as_png
 ```
 
 #### Arguments for Generation
@@ -47,13 +47,13 @@ To scan a QR code or barcode from an image file, use the `--scan` option:
 **Scan a QR Code:**
 
 ```bash
-python main.py --scan "qrcode.png"
+python3 main.py --scan "qrcode.png"
 ```
 
 **Scan a Barcode:**
 
 ```bash
-python main.py --scan "barcode.png"
+python3 main.py --scan "barcode.png"
 ```
 
 #### Arguments for Scanning

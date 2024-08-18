@@ -4,15 +4,16 @@ from PIL import Image
 import io
 import base64
 from colorama import Fore, Style, init
+from pyzbar.pyzbar import decode
 
 # Initialize colorama
 init(autoreset=True)
 
 class Barcode:
     """
-    BarcodeGenerator is a utility class for generating barcodes with optional embedding of a logo.
+    Barcode is a utility class for generating and scanning barcodes with optional embedding of a logo.
     It supports saving the barcode either as an image file or as a base64-encoded string in a text file.
-    
+
     Usage:
         barcode = Barcode()
         
@@ -31,6 +32,10 @@ class Barcode:
             data="123456789012", 
             save_as_png=False
         )
+        
+        # Scan barcode from an image
+        result = barcode.scan_barcode("barcode.png")
+        print(result)
     """
 
     def generate_barcode(self, filename=None, logo_path=None, data=None, save_as_png=True):
@@ -97,3 +102,17 @@ class Barcode:
                 text_file.write(image_string)
 
             return f'Barcode string has been saved as {filename}'
+
+    def scan_barcode(self, filename):
+        # Open the image file
+        img = Image.open(filename)
+
+        # Decode the barcode from the image
+        decoded_objects = decode(img)
+
+        # Check if any barcode was found
+        if not decoded_objects:
+            raise ValueError(Fore.RED + Style.BRIGHT + "No barcode found in the image.")
+
+        # Return the decoded data from the first barcode found
+        return decoded_objects[0].data.decode('utf-8')
