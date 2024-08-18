@@ -3,33 +3,41 @@ from PIL import Image
 import io
 import base64
 from colorama import Fore, Style, init
+from pyzbar.pyzbar import decode
 
 # Initialize colorama
 init(autoreset=True)
 
 class QRCode:
     """
-    QRCodeScanner is a utility class for generating QR codes with optional embedded logos.
-    It supports saving the QR code either as an image file or as a base64-encoded string in a text file.
+    QRCode is a utility class for generating QR codes with optional embedded logos and for scanning barcodes from images.
+    It supports saving the QR code either as an image file or as a base64-encoded string in a text file, 
+    and can also decode QR codes and barcodes from images.
     
     Usage:
-        qrcode = QRCode)
+        qrcode = QRCode()
         
         # Generate QR code and save as PNG
-        qrcode.generate_qrcode(
+        result = qrcode.generate_qrcode(
             filename="output.png", 
             logo_path="logo.png", 
             data="https://www.example.com", 
             save_as_png=True
         )
+        print(result)  # Output: QR code has been saved as output.png
         
         # Generate QR code and save as base64 string in a text file
-        qrcode.generate_qrcode(
+        result = qrcode.generate_qrcode(
             filename="output.png", 
             logo_path="logo.png", 
             data="https://www.example.com", 
             save_as_png=False
         )
+        print(result)  # Output: QR code string has been saved as output.txt
+
+        # Scan QR code or barcode from an image
+        result = qrcode.scan_image("barcode_or_qrcode.png")
+        print(result)  # Output: Decoded data from the image
     """
 
     def generate_qrcode(self, filename=None, logo_path=None, data=None, save_as_png=True):
@@ -100,4 +108,29 @@ class QRCode:
 
             return f'QR code string has been saved as {filename}'
 
-
+    def scan_qrcode(self, image_path):
+        """
+        Scans a barcode or QR code from an image and returns the decoded data.
+        
+        Args:
+            image_path (str): Path to the image file containing the barcode or QR code.
+        
+        Returns:
+            str: The decoded data from the image.
+        """
+        try:
+            # Open the image file
+            img = Image.open(image_path)
+            
+            # Decode the QR code
+            decoded_objects = decode(img)
+            
+            if not decoded_objects:
+                return "No QR code detected."
+            
+            # Return the decoded data
+            results = [obj.data.decode('utf-8') for obj in decoded_objects]
+            return "\n".join(results)
+        
+        except Exception as e:
+            return f"Error scanning image: {e}"

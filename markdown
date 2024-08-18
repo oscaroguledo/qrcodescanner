@@ -1,9 +1,44 @@
+from tools.qrcode import QRCode
+from tools.barcode import Barcode
 
-### Explanation:
+# Example usage for QR Code generation
+try:
+    qrcode = QRCode()
+    result = qrcode.generate_qrcode(
+        data='https://www.thepythoncode.com', 
+        logo_path='logo.png', 
+        filename='qrcode.png', 
+        save_as_png=True
+    )
+    print(result)
+except ValueError as e:
+    print(f"Error: {e}")
 
-1. **Project Overview**: Briefly describes the purpose of the classes.
-2. **Classes**: Provides a section for each class with usage examples and method descriptions.
-3. **Requirements**: Lists the dependencies needed to run the code.
-4. **License**: Information about the licensing of the project.
+# Example usage for QR Code scanning
+try:
+    qrcode = QRCode()
+    result = qrcode.scan_qrcode('qrcode.png')
+    print(result)
+except ValueError as e:
+    print(f"Error: {e}")
 
-Adjust the import statements in the usage examples according to your actual file structure. If your files are named differently or placed in different directories, make sure to update the import paths accordingly.
+# Example usage for Barcode generation
+try:
+    barcode = Barcode()
+    result = barcode.generate_barcode(
+        data='123456789012', 
+        logo_path='logo.png', 
+        filename='barcode.png', 
+        save_as_png=True
+    )
+    print(result)
+except ValueError as e:
+    print(f"Error: {e}")
+
+# Example usage for Barcode scanning
+try:
+    barcode = Barcode()
+    result = barcode.scan_barcode('barcode.png')
+    print(result)
+except ValueError as e:
+    print(f"Error: {e}")
