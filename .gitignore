@@ -1,0 +1,48 @@
+# Ignore cache directories
+**/__pycache__/
+**/.cache/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Ignore images and text files
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.bmp
+*.tiff
+*.ico
+*.txt
+
+# Ignore environment files
+.env
+.venv
+venv/
+env/
+
+# Ignore IDE/editor files
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Ignore other common files
+.DS_Store
+Thumbs.db
+*.log
+*.swp
+
+# Ignore build and distribution files
+build/
+dist/
+*.egg-info/
+*.egg
+*.gz
+*.zip
+
+# Ignore Python bytecode
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
