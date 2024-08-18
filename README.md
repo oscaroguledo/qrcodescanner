@@ -1,5 +1,3 @@
-Certainly! Here’s how you can update the `README.md` to include example usage for both QR code and barcode generation and scanning:
-
 ```markdown
 # Barcode and QR Code CLI Tool
 
@@ -148,5 +146,3 @@ This command will display usage information and available arguments.
 
 This `README.md` provides instructions for using the CLI tool to generate and scan barcodes and QR codes, including example code snippets, argument descriptions, and error handling tips.
 ```
-
-This updated `README.md` file includes detailed instructions for the CLI tool, including example code snippets for generating and scanning QR codes and barcodes, which should help users understand how to utilize the tool effectively.
